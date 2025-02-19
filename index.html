@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlixList</title>
+    <link id="themeStylesheet" rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>FlixList</h1>
+    <button id="toggleDarkMode">Toggle Dark Mode</button>
+
+    <div class="search-container">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search for a movie or TV show..."
+      />
+      <button id="searchButton">Search</button>
+    </div>
+
+    <div id="results"></div>
+
+    <h2>Want to Watch</h2>
+    <ul id="wantToWatch"></ul>
+    <h2>Watched</h2>
+    <ul id="watched"></ul>
+
+    <div class="export-import">
+      <button id="exportButton">Export</button>
+      <input type="file" id="importFile" hidden />
+      <button id="importButton">Import</button>
+    </div>
+
+    <!-- Load Dark Mode Setting -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let savedTheme = localStorage.getItem("theme") || "style.css";
+        document
+          .getElementById("themeStylesheet")
+          .setAttribute("href", savedTheme);
+      });
+    </script>
+
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
