@@ -1,22 +1,14 @@
 // Ensure script runs after the page loads
 document.addEventListener("DOMContentLoaded", () => {
-  renderLists();
-  loadTheme();
+  renderLists(); // Load stored watchlists
+  loadTheme(); // Apply the saved theme
 });
 
-/*
-**Security Notice:** Hardcoding API keys **is not a best practice**, this project is meant to run locally, as it exposes sensitive data. Instead, consider:
-  **Using environment variables (`.env` files)** if deploying on a backend server.
-  **Keeping the project local** if you do not wish to expose your key.
-  **Storing the key securely using a backend proxy or secrets management tool.**
-Hardcoded API Key (Replace "YOUR_API_KEY" with your actual key)
-*/
+// Hardcoded API Key (Replace "YOUR_API_KEY" with your actual key)
 const API_KEY = "xxxxxx";
 
-// Search button event listener
+// Event listeners for search, export, and import
 document.getElementById("searchButton").addEventListener("click", searchMovie);
-
-// Export & Import event listeners
 document.getElementById("exportButton").addEventListener("click", exportData);
 document
   .getElementById("importButton")
@@ -25,7 +17,7 @@ document
   );
 document.getElementById("importFile").addEventListener("change", importData);
 
-// Function to fetch and display search results
+// Function to search for movies using the OMDb API
 async function searchMovie() {
   const query = document.getElementById("search").value.trim();
   if (!query) return;
@@ -58,7 +50,8 @@ function displayResults(results) {
             movie.Poster !== "N/A"
               ? movie.Poster
               : "https://via.placeholder.com/250x370?text=No+Image"
-          }" alt="${movie.Title}">
+          }"
+              alt="${movie.Title}">
           <p><strong>${movie.Title}</strong> (${movie.Year})</p>
           <div class="button-group">
               <button onclick="addToList('${
@@ -80,7 +73,6 @@ async function addToList(imdbID, listName) {
       `https://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}`
     );
     const movie = await response.json();
-
     if (!movie.Title) return;
 
     let list = JSON.parse(localStorage.getItem(listName) || "[]");
@@ -94,7 +86,7 @@ async function addToList(imdbID, listName) {
   }
 }
 
-// Function to render the watchlists
+// Function to render stored watchlists
 function renderLists() {
   ["wantToWatch", "watched"].forEach((listName) => {
     document.getElementById(listName).innerHTML = JSON.parse(
@@ -102,15 +94,16 @@ function renderLists() {
     )
       .map(
         (movie) => `<li>
-              <img src="${movie.Poster}" alt="${movie.Title}" style="width:50px;">
-              ${movie.Title} (${movie.Year})
-              <button onclick="removeFromList('${movie.imdbID}', '${listName}')">Remove</button></li>`
+                <img src="${movie.Poster}" alt="${movie.Title}" style="width:50px;">
+                ${movie.Title} (${movie.Year})
+                <button onclick="removeFromList('${movie.imdbID}', '${listName}')">Remove</button>
+              </li>`
       )
       .join("");
   });
 }
 
-// Function to remove a movie from a list
+// Function to remove a movie from a watchlist
 function removeFromList(imdbID, listName) {
   let list = JSON.parse(localStorage.getItem(listName) || "[]").filter(
     (movie) => movie.imdbID !== imdbID
