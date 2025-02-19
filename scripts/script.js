@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loadTheme(); // Apply the saved theme
 });
 
-// Hardcoded API Key (Replace "YOUR_API_KEY" with your actual key)
-const API_KEY = "xxxxxx";
+/*
+ **Security Notice:** Hardcoding API keys **is not a best practice**, this project is meant to run locally, as it exposes sensitive data. Instead, consider:*/
+const API_KEY = "xxxxxx"; // Hardcoded API Key (Replace "YOUR_API_KEY" with your actual key)
 
 // Event listeners for search, export, and import
 document.getElementById("searchButton").addEventListener("click", searchMovie);
