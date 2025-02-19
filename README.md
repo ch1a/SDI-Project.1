@@ -18,12 +18,21 @@ It utilizes the **OMDb API** to fetch movie details and **localStorage** to stor
 ## 📁 Project Structure
 ```
 /Movie-Tracker
-│── index.html         # Main HTML file
-│── script.js          # JavaScript logic for functionality
-│── style.css          # Light mode CSS styling
-│── dark-style.css     # Dark mode CSS styling
-│── package.json       # Project dependencies
-│── README.md          # Documentation
+│── index.html             # Main HTML file
+│── README.md              # Documentation
+│
+├── styles/                # Stylesheets folder
+│   │── style.css          # Light mode CSS styling
+│   │── dark-style.css     # Dark mode CSS styling
+│
+├── scripts/               # JavaScript folder
+│   │── script.js          # JavaScript logic for functionality
+│
+├── images/                # Wireframe images folder (not needed for project)
+│   │── Wireframe1.png
+│   │── Wireframe2.png
+│   │── Wireframe3.png
+│   │── Wireframe4.png
 ```
 
 ---
@@ -122,8 +131,15 @@ https://www.omdbapi.com/?apikey=your_api_key_here&s=batman
 ---
 ##  **Wireframe/Prototype/User Story**
 - **To view the Wireframe, Prototype and User Story visit: **
-https://www.notion.so/1995b9eed32c80d58749d299b0260f20?v=1995b9eed32c8121a85d000cc94f484d&pvs=4
+
+[Kanban Board link](https://www.notion.so/1995b9eed32c80d58749d299b0260f20?v=1995b9eed32c8121a85d000cc94f484d&pvs=4)
+
 -- You may find each section under completed tasks, click to view details.
+
+![Wireframe 1](images/Wireframe1.png)
+![Wireframe 1](images/Wireframe2.png)
+![Wireframe 1](images/Wireframe3.png)
+![Wireframe 1](images/Wireframe4.png)
 
 
 ## 📝 **License**
